@@ -1,0 +1,32 @@
+name: CI
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    #- uses: actions/setup-node@v1 # old node version, doesnt work
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+    - run: npm install
+    - run: npm test
+  test-composite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - run: npm install
+      - run: npm test
+      - name: Setup Maven and java 21
+        id: setup-deps
+        uses: ./.github/actions
+      - name: Secret test
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_TEST }}
+        run: echo "Test Test Composite $GITHUB_TOKEN"
