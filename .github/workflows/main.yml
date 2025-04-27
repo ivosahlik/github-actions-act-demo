@@ -24,10 +24,10 @@ jobs:
           node-version: '20.x'
       - run: npm install
       - run: npm test
-      - name: Setup Maven and java 21
+      - name: Setup Composite
         id: setup-deps
         uses: ./.github/actions
       - name: Secret test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_TEST }}
-        run: echo "Test Test Composite $GITHUB_TOKEN"
+        run: echo "Test Test Composite $GITHUB_TOKEN_TEST"
