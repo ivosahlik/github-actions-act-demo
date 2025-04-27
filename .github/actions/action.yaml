@@ -5,4 +5,6 @@ runs:
   using: composite
   steps:
     - name: Test Step
+      shell: bash
       run: echo "Test Test Composite"
+
