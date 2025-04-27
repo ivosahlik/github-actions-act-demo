@@ -30,4 +30,4 @@ jobs:
       - name: Secret test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_TEST }}
-        run: echo "Test Test Composite $GITHUB_TOKEN_TEST"
+        run: echo "Test Test Composite $GITHUB_TOKEN"
